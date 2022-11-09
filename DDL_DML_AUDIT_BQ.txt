@@ -1,0 +1,16 @@
+AUDIT DDL
+--------------------------
+create table audit_initial_dev.stage_audit(
+table_name string,
+user_name string,
+last_ingested_time timestamp,
+next_ingestion_time timestamp,
+total_record_count int64)
+----------------------------------------------
+
+insert into usecase2_audit.stage_audit             ****(source dataset that is auditdataset_name.table_name)
+select "stage_initial_dev.stg_table" as table_name,
+"sultan" as user_name,
+current_timestamp() as last_ingested_time,
+date_add(current_timestamp(), interval 1 DAY),
+count(*) as total_record_count from usecase2_stage.table_stage  ****(here must be stage datasetname.tablename)
