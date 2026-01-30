@@ -20,4 +20,5 @@ currency_code string,
 access_code string,
 guid string,
 stock_sym_20 string,
-emp_role string)
+emp_role string)customer_name string 
+order_id int64
